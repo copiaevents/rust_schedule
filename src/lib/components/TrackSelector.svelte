@@ -84,7 +84,7 @@
 	}
 
 	.track-selector-wrapper.animated .track-tab {
-		opacity: 0.7;
+		opacity: 0.8;
 		transform: translateY(0);
 		animation: tab-entrance 0.4s ease-out backwards;
 		animation-delay: var(--delay);
@@ -96,7 +96,7 @@
 			transform: translateY(-10px);
 		}
 		to {
-			opacity: 0.7;
+			opacity: 0.8;
 			transform: translateY(0);
 		}
 	}
@@ -108,9 +108,10 @@
 	}
 
 	.track-tab.active {
-		opacity: 1;
+		opacity: 1 !important;
 		background: var(--color-yellow);
 		color: var(--color-black);
+		font-weight: 700;
 	}
 
 	.track-tab.pulse {
