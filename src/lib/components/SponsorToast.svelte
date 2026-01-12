@@ -87,7 +87,10 @@
 </script>
 
 {#if visible && currentAd}
-	<div class="toast-container">
+	<div class="toast-container" role="region" aria-label="Sponsor message">
+		<div class="sr-only" aria-live="polite" aria-atomic="true">
+			Sponsored by {currentAd.name}: {currentAd.message}
+		</div>
 		<a href={currentAd.url} target="_blank" rel="noopener noreferrer" class="toast">
 			<div class="progress-bar" style="width: {progress}%"></div>
 
@@ -259,5 +262,17 @@
 			width: 56px;
 			height: 56px;
 		}
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
 	}
 </style>

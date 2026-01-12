@@ -51,7 +51,7 @@
 <style>
 	.track-selector-wrapper {
 		position: sticky;
-		top: 52px;
+		top: 40px;
 		z-index: 90;
 		background:
 			linear-gradient(225deg, transparent 85%, rgba(132, 26, 242, 0.3) 85%, rgba(132, 26, 242, 0.3) 95%, transparent 95%),
@@ -145,7 +145,7 @@
 		justify-content: center;
 		gap: var(--space-xs);
 		padding: var(--space-xs) var(--space-sm);
-		color: rgba(255, 255, 255, 0.7);
+		color: rgba(255, 255, 255, 0.9);
 		font-size: var(--text-xs);
 	}
 
