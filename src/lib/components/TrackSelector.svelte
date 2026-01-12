@@ -145,7 +145,6 @@
 		padding: var(--space-xs) var(--space-sm);
 		color: rgba(255, 255, 255, 0.7);
 		font-size: var(--text-xs);
-		animation: hint-fade 3s ease-in-out forwards;
 	}
 
 	.scroll-hint svg {
@@ -161,22 +160,7 @@
 		}
 	}
 
-	@keyframes hint-fade {
-		0% {
-			opacity: 0;
-		}
-		20% {
-			opacity: 1;
-		}
-		80% {
-			opacity: 1;
-		}
-		100% {
-			opacity: 0;
-			visibility: hidden;
-		}
-	}
-
+	
 	@media (min-width: 768px) {
 		.track-selector {
 			justify-content: center;
