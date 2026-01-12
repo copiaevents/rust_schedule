@@ -45,14 +45,12 @@
 		data: Talk | BreakItem;
 	}
 
-	// Check if search/filter is active
-	let isFiltering = $derived(searchQuery.trim() !== '' || selectedTags.length > 0);
-
-	function getScheduleForTrack(trackId: number | null, query: string, tags: string[]): ScheduleItem[] {
+	function getSchedule(trackId: number, query: string, tags: string[]): ScheduleItem[] {
+		const hasFilter = query.trim() !== '' || tags.length > 0;
 		let talks = (scheduleData.talks as Talk[]);
 
-		// If not filtering, only show selected track
-		if (trackId !== null) {
+		// Only filter by track if NOT searching/filtering
+		if (!hasFilter) {
 			talks = talks.filter((talk) => talk.track === trackId);
 		}
 
@@ -73,7 +71,7 @@
 		const talkItems = talks.map((talk) => ({ type: 'talk' as const, time: talk.time, data: talk }));
 
 		// Only show breaks if no search/filter active
-		const breaks = (trackId === null) ? [] : (scheduleData.breaks as BreakItem[]).map((b) => ({
+		const breaks = hasFilter ? [] : (scheduleData.breaks as BreakItem[]).map((b) => ({
 			type: 'break' as const,
 			time: b.time,
 			data: b
@@ -91,8 +89,10 @@
 		return track?.name || '';
 	}
 
-	// When filtering, search all tracks (pass null); otherwise use selected track
-	let schedule = $derived(getScheduleForTrack(isFiltering ? null : selectedTrack, searchQuery, selectedTags));
+	// Check if filtering is active
+	let isFiltering = $derived(searchQuery.trim() !== '' || selectedTags.length > 0);
+
+	let schedule = $derived(getSchedule(selectedTrack, searchQuery, selectedTags));
 
 	function handleTrackSelect(trackId: number) {
 		selectedTrack = trackId;
