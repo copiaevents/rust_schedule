@@ -50,7 +50,9 @@
 
 <style>
 	.track-selector-wrapper {
-		position: relative;
+		position: sticky;
+		top: 52px;
+		z-index: 90;
 		background:
 			linear-gradient(225deg, transparent 85%, rgba(132, 26, 242, 0.3) 85%, rgba(132, 26, 242, 0.3) 95%, transparent 95%),
 			linear-gradient(180deg, #6a08d4 0%, #5a07b8 100%);
@@ -162,6 +164,10 @@
 
 	
 	@media (min-width: 768px) {
+		.track-selector-wrapper {
+			top: 60px;
+		}
+
 		.track-selector {
 			justify-content: center;
 			padding: var(--space-md);
