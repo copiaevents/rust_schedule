@@ -4,6 +4,7 @@
 	interface SponsorAd {
 		id: number;
 		name: string;
+		tier: string;
 		logo: string;
 		message: string;
 		url: string;
@@ -93,7 +94,10 @@
 			<img src={currentAd.logo} alt="{currentAd.name} logo" class="sponsor-logo" />
 
 			<div class="toast-content">
-				<span class="sponsor-label">Sponsored by</span>
+				<div class="sponsor-header">
+					<span class="sponsor-label">Sponsored by</span>
+					<span class="sponsor-tier tier--{currentAd.tier}">{currentAd.tier}</span>
+				</div>
 				<span class="sponsor-name">{currentAd.name}</span>
 				<span class="sponsor-message">{currentAd.message}</span>
 			</div>
@@ -172,11 +176,46 @@
 		gap: 2px;
 	}
 
+	.sponsor-header {
+		display: flex;
+		align-items: center;
+		gap: var(--space-sm);
+	}
+
 	.sponsor-label {
 		font-size: var(--text-xs);
 		color: var(--color-text-muted);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
+	}
+
+	.sponsor-tier {
+		font-size: 10px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		padding: 2px 6px;
+		border-radius: var(--radius-sm);
+	}
+
+	.tier--platinum {
+		background: linear-gradient(135deg, #E5E4E2, #A8A9AD);
+		color: var(--color-black);
+	}
+
+	.tier--gold {
+		background: linear-gradient(135deg, #FFD700, #FFA500);
+		color: var(--color-black);
+	}
+
+	.tier--silver {
+		background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
+		color: var(--color-black);
+	}
+
+	.tier--bronze {
+		background: linear-gradient(135deg, #CD7F32, #A0522D);
+		color: var(--color-white);
 	}
 
 	.sponsor-name {

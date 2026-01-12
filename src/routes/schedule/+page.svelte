@@ -73,7 +73,7 @@
 		onSelect={handleTrackSelect}
 	/>
 
-	<SponsorToast ads={adsData.ads} duration={5000} delayBetween={15000} />
+	<SponsorToast ads={adsData.ads} duration={8000} delayBetween={15000} />
 
 	<div
 		class="schedule-content"
