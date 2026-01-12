@@ -47,7 +47,6 @@
 		<div class="talk-time">
 			<span class="time">{talk.time}</span>
 			<span class="duration">{formatDuration(talk.duration)}</span>
-			<span class="timezone">GMT</span>
 		</div>
 		<img
 			src={talk.speakerPhoto}
@@ -175,14 +174,6 @@
 	.duration {
 		font-size: var(--text-xs);
 		color: var(--color-text-muted);
-	}
-
-	.timezone {
-		font-size: 10px;
-		color: var(--color-text-muted);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		margin-top: 2px;
 	}
 
 	.speaker-photo {

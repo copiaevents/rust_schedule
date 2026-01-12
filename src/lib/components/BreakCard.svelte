@@ -20,7 +20,7 @@
 
 <div class="break-card">
 	<span class="break-icon" aria-hidden="true">{icons[breakItem.type] || '\u23f8'}</span>
-	<span class="break-time">{breakItem.time} <span class="timezone">GMT</span></span>
+	<span class="break-time">{breakItem.time}</span>
 	<span class="break-label">{breakItem.label}</span>
 	<span class="break-duration">{breakItem.duration} min</span>
 </div>
@@ -43,17 +43,6 @@
 	.break-time {
 		font-weight: 700;
 		font-size: var(--text-sm);
-		display: flex;
-		align-items: baseline;
-		gap: var(--space-xs);
-	}
-
-	.timezone {
-		font-size: 10px;
-		font-weight: 500;
-		opacity: 0.8;
-		text-transform: uppercase;
-		letter-spacing: 0.03em;
 	}
 
 	.break-label {
