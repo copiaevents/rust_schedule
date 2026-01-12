@@ -12,12 +12,6 @@ This document tracks all functional issues identified for the Rust Nation UK con
 - Consider PWA manifest for install capability
 - Cache static assets and JSON data for offline viewing
 
-### 5. No Error Boundaries
-- No graceful handling if data fails to load
-- API errors would show broken UI
-- Need Svelte error boundary components
-- Should show user-friendly error messages with retry options
-
 ### 7. No Keyboard Navigation for Track Selector
 - Track tabs lack arrow key navigation
 - Should support Left/Right arrow keys to move between tabs
@@ -28,6 +22,13 @@ This document tracks all functional issues identified for the Rust Nation UK con
 ---
 
 ## Fixed Issues
+
+### 5. No Error Boundaries
+- **Status:** Fixed
+- Added global `+error.svelte` page
+- Shows friendly error message with error code
+- Includes "Try again" and "Go home" buttons
+- Handles both 404 and other error types
 
 ### 2. No Timezone Display
 - **Status:** Fixed
