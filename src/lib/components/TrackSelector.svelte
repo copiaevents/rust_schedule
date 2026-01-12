@@ -86,7 +86,7 @@
 	}
 
 	.track-selector-wrapper.animated .track-tab {
-		opacity: 0.8;
+		opacity: 0.9;
 		transform: translateY(0);
 		animation: tab-entrance 0.4s ease-out backwards;
 		animation-delay: var(--delay);
@@ -98,7 +98,7 @@
 			transform: translateY(-10px);
 		}
 		to {
-			opacity: 0.8;
+			opacity: 0.9;
 			transform: translateY(0);
 		}
 	}

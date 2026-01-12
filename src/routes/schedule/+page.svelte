@@ -327,29 +327,29 @@
 	}
 
 	.filter-label {
-		opacity: 0.9;
+		opacity: 1;
 	}
 
 	.filter-chip {
 		padding: 2px var(--space-sm);
-		background: rgba(255, 255, 255, 0.2);
+		background: rgba(255, 255, 255, 0.25);
 		border-radius: var(--radius-sm);
-		font-weight: 500;
+		font-weight: 600;
 		text-transform: capitalize;
 	}
 
 	.clear-filters {
 		margin-left: auto;
 		padding: 2px var(--space-sm);
-		background: rgba(255, 255, 255, 0.2);
+		background: rgba(255, 255, 255, 0.25);
 		border-radius: var(--radius-sm);
 		font-size: var(--text-xs);
-		font-weight: 500;
+		font-weight: 600;
 		transition: background var(--transition-fast);
 	}
 
 	.clear-filters:hover {
-		background: rgba(255, 255, 255, 0.3);
+		background: rgba(255, 255, 255, 0.35);
 	}
 
 	.schedule-content {
