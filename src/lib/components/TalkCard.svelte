@@ -42,24 +42,24 @@
 </script>
 
 <article class="talk-card">
-	<div class="talk-time">
-		<span class="time">{talk.time}</span>
-		<span class="duration">{formatDuration(talk.duration)}</span>
+	<div class="talk-left">
+		<div class="talk-time">
+			<span class="time">{talk.time}</span>
+			<span class="duration">{formatDuration(talk.duration)}</span>
+		</div>
+		<img
+			src={talk.speakerPhoto}
+			alt=""
+			class="speaker-photo"
+			loading="lazy"
+		/>
 	</div>
 
 	<div class="talk-content">
 		<div class="talk-header">
-			<img
-				src={talk.speakerPhoto}
-				alt=""
-				class="speaker-photo"
-				loading="lazy"
-			/>
-			<div class="talk-info">
-				<Tag type={talk.tag} />
-				<h3 class="talk-title">{talk.title}</h3>
-				<p class="speaker-name">{talk.speaker}</p>
-			</div>
+			<Tag type={talk.tag} />
+			<h3 class="talk-title">{talk.title}</h3>
+			<p class="speaker-name">{talk.speaker}</p>
 		</div>
 
 		<button
@@ -145,12 +145,18 @@
 		box-shadow: var(--shadow-sm);
 	}
 
+	.talk-left {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-sm);
+		min-width: 60px;
+	}
+
 	.talk-time {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		min-width: 50px;
-		padding-top: var(--space-xs);
 	}
 
 	.time {
@@ -164,6 +170,14 @@
 		color: var(--color-text-muted);
 	}
 
+	.speaker-photo {
+		width: 52px;
+		height: 52px;
+		border-radius: var(--radius-full);
+		object-fit: cover;
+		flex-shrink: 0;
+	}
+
 	.talk-content {
 		flex: 1;
 		min-width: 0;
@@ -171,21 +185,9 @@
 
 	.talk-header {
 		display: flex;
-		gap: var(--space-md);
+		flex-direction: column;
 		align-items: flex-start;
-	}
-
-	.speaker-photo {
-		width: 56px;
-		height: 56px;
-		border-radius: var(--radius-full);
-		object-fit: cover;
-		flex-shrink: 0;
-	}
-
-	.talk-info {
-		flex: 1;
-		min-width: 0;
+		gap: var(--space-xs);
 	}
 
 	.talk-title {
@@ -267,8 +269,8 @@
 			padding: var(--space-lg);
 		}
 
-		.talk-time {
-			min-width: 70px;
+		.talk-left {
+			min-width: 80px;
 		}
 
 		.time {
@@ -276,8 +278,8 @@
 		}
 
 		.speaker-photo {
-			width: 72px;
-			height: 72px;
+			width: 64px;
+			height: 64px;
 		}
 
 		.talk-title {
