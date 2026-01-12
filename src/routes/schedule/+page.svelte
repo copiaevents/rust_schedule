@@ -13,7 +13,6 @@
 	let isLoading = $state(true);
 
 	const allTags = ['keynote', 'talk', 'tutorial'];
-	const timezone = 'GMT';
 
 	interface Talk {
 		id: number;
@@ -157,13 +156,6 @@
 				</button>
 			{/each}
 		</div>
-		<div class="timezone-badge">
-			<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-				<circle cx="12" cy="12" r="10"/>
-				<path d="M12 6v6l4 2"/>
-			</svg>
-			{timezone}
-		</div>
 	</div>
 
 	{#if searchQuery || selectedTags.length > 0}
@@ -300,18 +292,6 @@
 		background: var(--color-primary);
 		border-color: var(--color-primary);
 		color: var(--color-white);
-	}
-
-	.timezone-badge {
-		display: flex;
-		align-items: center;
-		gap: var(--space-xs);
-		padding: var(--space-xs) var(--space-sm);
-		background: var(--color-gray-100);
-		border-radius: var(--radius-md);
-		font-size: var(--text-xs);
-		font-weight: 600;
-		color: var(--color-gray-600);
 	}
 
 	/* Active Filters */
