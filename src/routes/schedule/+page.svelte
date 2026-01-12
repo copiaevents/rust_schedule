@@ -2,7 +2,9 @@
 	import TrackSelector from '$lib/components/TrackSelector.svelte';
 	import TalkCard from '$lib/components/TalkCard.svelte';
 	import BreakCard from '$lib/components/BreakCard.svelte';
+	import SponsorToast from '$lib/components/SponsorToast.svelte';
 	import scheduleData from '$lib/data/schedule.json';
+	import adsData from '$lib/data/ads.json';
 
 	let selectedTrack = $state(1);
 
@@ -70,6 +72,8 @@
 		{selectedTrack}
 		onSelect={handleTrackSelect}
 	/>
+
+	<SponsorToast ads={adsData.ads} duration={5000} delayBetween={15000} />
 
 	<div
 		class="schedule-content"

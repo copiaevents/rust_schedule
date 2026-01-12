@@ -1,0 +1,18 @@
+{
+  "ads": [
+    {
+      "id": 1,
+      "name": "Ferrous Systems",
+      "logo": "https://placehold.co/100x100/780AE9/FFFFFF?text=Ferrous",
+      "message": "World-class Rust training and consulting",
+      "url": "https://ferrous-systems.com"
+    },
+    {
+      "id": 2,
+      "name": "AWS",
+      "logo": "https://placehold.co/100x100/FF9900/000000?text=AWS",
+      "message": "Build with Rust on AWS Lambda",
+      "url": "https://aws.amazon.com"
+    }
+  ]
+}
