@@ -19,6 +19,11 @@
 	--color-gray-600: #6E6E73;
 	--color-gray-800: #3A3A3C;
 
+	/* Purple variants for background */
+	--color-purple-dark: #7408E3;
+	--color-purple-mid: #780AE9;
+	--color-purple-light: #841AF2;
+
 	/* Semantic Colors */
 	--color-background: var(--color-primary);
 	--color-surface: var(--color-white);

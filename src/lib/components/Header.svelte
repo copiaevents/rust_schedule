@@ -38,7 +38,9 @@
 		align-items: center;
 		justify-content: space-between;
 		padding: var(--space-md) var(--space-lg);
-		background: var(--color-primary);
+		background:
+			linear-gradient(135deg, transparent 75%, rgba(132, 26, 242, 0.4) 75%, rgba(132, 26, 242, 0.4) 85%, transparent 85%),
+			linear-gradient(180deg, #780AE9 0%, #7408E3 100%);
 		position: sticky;
 		top: 0;
 		z-index: 100;

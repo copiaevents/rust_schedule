@@ -66,7 +66,10 @@
 	}
 
 	.sponsors-header {
-		background: var(--color-primary);
+		background:
+			linear-gradient(135deg, transparent 60%, rgba(116, 8, 227, 0.5) 60%, rgba(116, 8, 227, 0.5) 70%, transparent 70%),
+			linear-gradient(225deg, transparent 70%, rgba(132, 26, 242, 0.4) 70%, rgba(132, 26, 242, 0.4) 85%, transparent 85%),
+			linear-gradient(180deg, #780AE9 0%, #6a08d4 100%);
 		padding: var(--space-xl) var(--space-lg);
 		text-align: center;
 	}

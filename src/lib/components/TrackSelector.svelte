@@ -36,7 +36,9 @@
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
 		scrollbar-width: none;
-		background: var(--color-primary-dark);
+		background:
+			linear-gradient(225deg, transparent 85%, rgba(132, 26, 242, 0.3) 85%, rgba(132, 26, 242, 0.3) 95%, transparent 95%),
+			linear-gradient(180deg, #6a08d4 0%, #5a07b8 100%);
 	}
 
 	.track-selector::-webkit-scrollbar {
