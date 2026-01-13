@@ -25,7 +25,7 @@
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: var(--color-white);
+		color: var(--color-text-light);
 	}
 
 	.tag--keynote {

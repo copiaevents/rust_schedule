@@ -218,7 +218,7 @@
 
 	.tier--bronze {
 		background: linear-gradient(135deg, #CD7F32, #A0522D);
-		color: var(--color-white);
+		color: var(--color-text-light);
 	}
 
 	.sponsor-name {

@@ -126,7 +126,7 @@
 
 	.btn-retry {
 		background: var(--color-primary);
-		color: var(--color-white);
+		color: var(--color-text-light);
 	}
 
 	.btn-retry:hover {

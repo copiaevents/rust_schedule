@@ -198,14 +198,14 @@
 		border-radius: var(--radius-sm);
 		font-size: 10px;
 		font-weight: 700;
-		color: var(--color-white);
+		color: var(--color-text-light);
 		letter-spacing: 0.05em;
 	}
 
 	.now-dot {
 		width: 6px;
 		height: 6px;
-		background: var(--color-white);
+		background: var(--color-text-light);
 		border-radius: 50%;
 		animation: pulse-dot 1.5s ease-in-out infinite;
 	}

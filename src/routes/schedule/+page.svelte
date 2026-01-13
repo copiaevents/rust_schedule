@@ -316,7 +316,7 @@
 	.tag-filter.active {
 		background: var(--color-primary);
 		border-color: var(--color-primary);
-		color: var(--color-white);
+		color: var(--color-text-light);
 	}
 
 	/* Active Filters */
@@ -327,7 +327,7 @@
 		gap: var(--space-sm);
 		padding: var(--space-xs) var(--space-md);
 		background: var(--color-primary);
-		color: var(--color-white);
+		color: var(--color-text-light);
 		font-size: var(--text-sm);
 	}
 
@@ -419,7 +419,7 @@
 	.clear-filters-btn {
 		padding: var(--space-sm) var(--space-lg);
 		background: var(--color-primary);
-		color: var(--color-white);
+		color: var(--color-text-light);
 		border-radius: var(--radius-md);
 		font-weight: 500;
 		transition: background var(--transition-fast);

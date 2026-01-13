@@ -125,12 +125,12 @@
 
 	.landing-card--schedule .card-icon {
 		background: var(--color-red);
-		color: var(--color-white);
+		color: var(--color-text-light);
 	}
 
 	.landing-card--sponsors .card-icon {
 		background: var(--color-green);
-		color: var(--color-white);
+		color: var(--color-text-light);
 	}
 
 	.card-title {

@@ -30,6 +30,7 @@
 	--color-text: var(--color-black);
 	--color-text-muted: var(--color-gray-600);
 	--color-text-on-primary: var(--color-white);
+	--color-text-light: #FFFFFF; /* Always white, for text on colored backgrounds */
 
 	/* Tag Colors */
 	--color-tag-keynote: var(--color-red);

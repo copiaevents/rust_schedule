@@ -33,7 +33,7 @@
 		padding: var(--space-sm) var(--space-md);
 		background: var(--color-green);
 		border-radius: var(--radius-md);
-		color: var(--color-white);
+		color: var(--color-text-light);
 	}
 
 	.break-icon {
