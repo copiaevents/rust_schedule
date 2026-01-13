@@ -113,7 +113,7 @@
 		flex-shrink: 0;
 		padding: var(--space-sm) var(--space-md);
 		border-radius: var(--radius-lg);
-		color: var(--color-text-on-primary);
+		color: rgba(255, 255, 255, 0.85);
 		font-weight: 500;
 		font-size: var(--text-sm);
 		white-space: nowrap;
@@ -123,7 +123,7 @@
 	}
 
 	.track-selector-wrapper.animated .track-tab {
-		opacity: 0.9;
+		opacity: 1;
 		transform: translateY(0);
 		animation: tab-entrance 0.4s ease-out backwards;
 		animation-delay: var(--delay);
@@ -135,7 +135,7 @@
 			transform: translateY(-10px);
 		}
 		to {
-			opacity: 0.9;
+			opacity: 1;
 			transform: translateY(0);
 		}
 	}

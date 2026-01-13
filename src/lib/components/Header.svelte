@@ -57,6 +57,7 @@
 	.nav {
 		display: flex;
 		gap: var(--space-sm);
+		margin-left: var(--space-md);
 	}
 
 	.nav-link {
