@@ -110,22 +110,22 @@
 
 	.sponsor-card--platinum .sponsor-tier {
 		background: linear-gradient(135deg, #E5E4E2, #A8A9AD);
-		color: var(--color-black);
+		color: #1a1a1a;
 	}
 
 	.sponsor-card--gold .sponsor-tier {
 		background: linear-gradient(135deg, #FFD700, #FFA500);
-		color: var(--color-black);
+		color: #1a1a1a;
 	}
 
 	.sponsor-card--silver .sponsor-tier {
 		background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
-		color: var(--color-black);
+		color: #1a1a1a;
 	}
 
 	.sponsor-card--bronze .sponsor-tier {
 		background: linear-gradient(135deg, #CD7F32, #A0522D);
-		color: var(--color-white);
+		color: var(--color-text-light);
 	}
 
 	.sponsor-bio {
