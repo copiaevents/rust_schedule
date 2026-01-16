@@ -6,9 +6,9 @@
     { "id": 4, "name": "Community Track" }
   ],
   "breaks": [
-    { "time": "10:30", "duration": 30, "type": "coffee", "label": "Coffee Break" },
+    { "time": "10:30", "duration": 30, "type": "coffee", "label": "Room change and networking" },
     { "time": "12:30", "duration": 60, "type": "lunch", "label": "Lunch" },
-    { "time": "15:30", "duration": 30, "type": "coffee", "label": "Afternoon Tea" }
+    { "time": "15:30", "duration": 30, "type": "coffee", "label": "Room change and networking" }
   ],
   "talks": [
     {
