@@ -138,7 +138,7 @@
 				<div class="toast-content">
 					<span class="sponsor-message">{currentAd.message}</span>
 					<span class="sponsor-name">{currentAd.name}</span>
-					<span class="sponsor-tier tier--{currentAd.tier}">{currentAd.tier} sponsor</span>
+					<span class="sponsor-tier">{currentAd.tier} sponsor</span>
 				</div>
 
 				<button
@@ -180,7 +180,7 @@
 					<img src={currentAd.logo} alt="{currentAd.name} logo" class="modal-logo" />
 
 					<div class="modal-header">
-						<span class="sponsor-tier tier--{currentAd.tier}">{currentAd.tier} sponsor</span>
+						<span class="sponsor-tier">{currentAd.tier} sponsor</span>
 					</div>
 
 					<h2 id="sponsor-modal-title" class="modal-title">{currentAd.name}</h2>
@@ -291,32 +291,10 @@
 	}
 
 	.sponsor-tier {
-		font-size: 10px;
-		font-weight: 700;
+		font-size: var(--text-xs);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		padding: 2px 6px;
-		border-radius: var(--radius-sm);
-	}
-
-	.tier--platinum {
-		background: linear-gradient(135deg, #E5E4E2, #A8A9AD);
-		color: #1a1a1a;
-	}
-
-	.tier--gold {
-		background: linear-gradient(135deg, #FFD700, #FFA500);
-		color: #1a1a1a;
-	}
-
-	.tier--silver {
-		background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
-		color: #1a1a1a;
-	}
-
-	.tier--bronze {
-		background: linear-gradient(135deg, #CD7F32, #A0522D);
-		color: var(--color-text-light);
+		color: var(--color-text-muted);
 	}
 
 	.sponsor-name {
