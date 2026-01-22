@@ -8,6 +8,7 @@
 		logo: string;
 		message: string;
 		url: string;
+		pdf?: string;
 	}
 
 	interface Props {
@@ -176,7 +177,32 @@
 					</svg>
 				</button>
 
-				<div class="modal-content">
+				<div class="modal-content" class:has-pdf={currentAd.pdf}>
+				{#if currentAd.pdf}
+					<div class="modal-pdf-header">
+						<img src={currentAd.logo} alt="{currentAd.name} logo" class="modal-logo-small" />
+						<div class="modal-pdf-info">
+							<span class="sponsor-tier">{currentAd.tier}</span>
+							<h2 id="sponsor-modal-title" class="modal-title-small">{currentAd.name}</h2>
+						</div>
+					</div>
+					<div class="pdf-container">
+						<iframe src={currentAd.pdf} title="{currentAd.name} information" class="pdf-viewer"></iframe>
+					</div>
+					<a
+						href={currentAd.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="modal-cta"
+					>
+						Visit Website
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+							<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+							<polyline points="15 3 21 3 21 9"/>
+							<line x1="10" y1="14" x2="21" y2="3"/>
+						</svg>
+					</a>
+				{:else}
 					<img src={currentAd.logo} alt="{currentAd.name} logo" class="modal-logo" />
 
 					<div class="modal-header">
@@ -200,6 +226,7 @@
 							<line x1="10" y1="14" x2="21" y2="3"/>
 						</svg>
 					</a>
+				{/if}
 				</div>
 			</div>
 		</div>
@@ -361,6 +388,12 @@
 		overflow: hidden;
 	}
 
+	.modal:has(.has-pdf) {
+		max-width: 600px;
+		max-height: 90vh;
+		overflow-y: auto;
+	}
+
 	@keyframes scale-in {
 		from {
 			transform: scale(0.95);
@@ -445,6 +478,56 @@
 		background: var(--color-primary-dark);
 	}
 
+	/* PDF Modal Styles */
+	.modal-content.has-pdf {
+		padding: var(--space-lg);
+	}
+
+	.modal-pdf-header {
+		display: flex;
+		align-items: center;
+		gap: var(--space-md);
+		width: 100%;
+		margin-bottom: var(--space-md);
+	}
+
+	.modal-logo-small {
+		width: 50px;
+		height: 50px;
+		object-fit: contain;
+		border-radius: var(--radius-sm);
+	}
+
+	.modal-pdf-info {
+		text-align: left;
+	}
+
+	.modal-title-small {
+		font-size: var(--text-lg);
+		font-weight: 700;
+		color: var(--color-text);
+		margin: 0;
+	}
+
+	.pdf-container {
+		width: 100%;
+		margin-bottom: var(--space-md);
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		background: var(--color-gray-100);
+	}
+
+	.pdf-viewer {
+		width: 100%;
+		height: 400px;
+		border: none;
+	}
+
+	.has-pdf .modal-cta {
+		width: 100%;
+		justify-content: center;
+	}
+
 	@media (min-width: 768px) {
 		.toast-container {
 			padding: var(--space-lg);
@@ -458,6 +541,14 @@
 		.modal-logo {
 			width: 120px;
 			height: 120px;
+		}
+
+		.pdf-viewer {
+			height: 500px;
+		}
+
+		.modal:has(.has-pdf) {
+			max-width: 700px;
 		}
 	}
 

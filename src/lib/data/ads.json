@@ -15,6 +15,15 @@
       "logo": "https://placehold.co/100x100/FF9900/000000?text=AWS",
       "message": "Build with Rust on AWS Lambda",
       "url": "https://aws.amazon.com"
+    },
+    {
+      "id": 3,
+      "name": "Helsing",
+      "tier": "Delegate Lounge Sponsor",
+      "logo": "/helsing-logo.png",
+      "message": "Oxidising European Defence",
+      "url": "https://helsing.ai/rust-nation",
+      "pdf": "/helsing-rust-mag.pdf"
     }
   ]
 }
