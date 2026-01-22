@@ -7,9 +7,11 @@
 		name: string;
 		tier: string;
 		logo: string;
+		logoDark?: string;
 		message: string;
+		fullMessage?: string;
+		image?: string;
 		url: string;
-		pdf?: string;
 	}
 
 	interface Props {
@@ -25,6 +27,7 @@
 	let expanded = $state(false);
 	let progress = $state(0);
 	let dismissed = $state(false);
+	let isDarkMode = $state(false);
 
 	let progressInterval: ReturnType<typeof setInterval>;
 	let hideTimeout: ReturnType<typeof setTimeout>;
@@ -100,6 +103,15 @@
 	}
 
 	onMount(() => {
+		// Detect dark mode
+		const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		isDarkMode = darkModeQuery.matches;
+
+		const handleColorSchemeChange = (e: MediaQueryListEvent) => {
+			isDarkMode = e.matches;
+		};
+		darkModeQuery.addEventListener('change', handleColorSchemeChange);
+
 		// Show first ad after a short delay
 		const initialDelay = setTimeout(() => {
 			showAd();
@@ -110,6 +122,7 @@
 			clearInterval(progressInterval);
 			clearTimeout(hideTimeout);
 			clearTimeout(nextAdTimeout);
+			darkModeQuery.removeEventListener('change', handleColorSchemeChange);
 		};
 	});
 
@@ -121,6 +134,14 @@
 			return `${base}${path}`;
 		}
 		return path;
+	}
+
+	// Get the correct logo based on dark/light mode
+	function getLogo(ad: SponsorAd): string {
+		if (isDarkMode && ad.logoDark) {
+			return resolveAsset(ad.logoDark);
+		}
+		return resolveAsset(ad.logo);
 	}
 </script>
 
@@ -143,7 +164,7 @@
 			>
 				<div class="progress-bar" style="width: {progress}%"></div>
 
-				<img src={resolveAsset(currentAd.logo)} alt="{currentAd.name} logo" class="sponsor-logo" />
+				<img src={getLogo(currentAd)} alt="{currentAd.name} logo" class="sponsor-logo" />
 
 				<div class="toast-content">
 					<span class="sponsor-message">{currentAd.message}</span>
@@ -186,33 +207,36 @@
 					</svg>
 				</button>
 
-				<div class="modal-content" class:has-pdf={currentAd.pdf}>
-				{#if currentAd.pdf}
-					<div class="modal-pdf-header">
-						<img src={resolveAsset(currentAd.logo)} alt="{currentAd.name} logo" class="modal-logo-small" />
-						<div class="modal-pdf-info">
+				<div class="modal-content" class:has-image={currentAd.image}>
+				{#if currentAd.image}
+					<img src={resolveAsset(currentAd.image)} alt="{currentAd.name} advertisement" class="modal-ad-image" />
+					<div class="modal-image-content">
+						<img src={getLogo(currentAd)} alt="{currentAd.name} logo" class="modal-logo-small" />
+						<div class="modal-image-header">
 							<span class="sponsor-tier">{currentAd.tier}</span>
 							<h2 id="sponsor-modal-title" class="modal-title-small">{currentAd.name}</h2>
 						</div>
+						{#if currentAd.fullMessage}
+							<p class="modal-full-message">{currentAd.fullMessage}</p>
+						{:else}
+							<p class="modal-message">{currentAd.message}</p>
+						{/if}
+						<a
+							href={currentAd.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="modal-cta"
+						>
+							Visit Website
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+								<polyline points="15 3 21 3 21 9"/>
+								<line x1="10" y1="14" x2="21" y2="3"/>
+							</svg>
+						</a>
 					</div>
-					<div class="pdf-container">
-						<iframe src={resolveAsset(currentAd.pdf)} title="{currentAd.name} information" class="pdf-viewer"></iframe>
-					</div>
-					<a
-						href={currentAd.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="modal-cta"
-					>
-						Visit Website
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-							<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-							<polyline points="15 3 21 3 21 9"/>
-							<line x1="10" y1="14" x2="21" y2="3"/>
-						</svg>
-					</a>
 				{:else}
-					<img src={resolveAsset(currentAd.logo)} alt="{currentAd.name} logo" class="modal-logo" />
+					<img src={getLogo(currentAd)} alt="{currentAd.name} logo" class="modal-logo" />
 
 					<div class="modal-header">
 						<span class="sponsor-tier">{currentAd.tier} sponsor</span>
@@ -397,8 +421,8 @@
 		overflow: hidden;
 	}
 
-	.modal:has(.has-pdf) {
-		max-width: 600px;
+	.modal:has(.has-image) {
+		max-width: 500px;
 		max-height: 90vh;
 		overflow-y: auto;
 	}
@@ -487,52 +511,50 @@
 		background: var(--color-primary-dark);
 	}
 
-	/* PDF Modal Styles */
-	.modal-content.has-pdf {
-		padding: var(--space-lg);
+	/* Image Modal Styles */
+	.modal-content.has-image {
+		padding: 0;
 	}
 
-	.modal-pdf-header {
-		display: flex;
-		align-items: center;
-		gap: var(--space-md);
+	.modal-ad-image {
 		width: 100%;
-		margin-bottom: var(--space-md);
+		display: block;
+		border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+	}
+
+	.modal-image-content {
+		padding: var(--space-lg);
+		text-align: center;
 	}
 
 	.modal-logo-small {
-		width: 50px;
-		height: 50px;
+		width: 60px;
+		height: 60px;
 		object-fit: contain;
-		border-radius: var(--radius-sm);
+		margin-bottom: var(--space-md);
 	}
 
-	.modal-pdf-info {
-		text-align: left;
+	.modal-image-header {
+		margin-bottom: var(--space-md);
 	}
 
 	.modal-title-small {
-		font-size: var(--text-lg);
+		font-size: var(--text-xl);
 		font-weight: 700;
 		color: var(--color-text);
-		margin: 0;
+		margin: var(--space-xs) 0 0 0;
 	}
 
-	.pdf-container {
-		width: 100%;
-		margin-bottom: var(--space-md);
-		border-radius: var(--radius-md);
-		overflow: hidden;
-		background: var(--color-gray-100);
+	.modal-full-message {
+		font-size: var(--text-sm);
+		line-height: 1.7;
+		color: var(--color-text-muted);
+		margin-bottom: var(--space-lg);
+		white-space: pre-line;
+		text-align: left;
 	}
 
-	.pdf-viewer {
-		width: 100%;
-		height: 400px;
-		border: none;
-	}
-
-	.has-pdf .modal-cta {
+	.has-image .modal-cta {
 		width: 100%;
 		justify-content: center;
 	}
@@ -552,12 +574,8 @@
 			height: 120px;
 		}
 
-		.pdf-viewer {
-			height: 500px;
-		}
-
-		.modal:has(.has-pdf) {
-			max-width: 700px;
+		.modal:has(.has-image) {
+			max-width: 550px;
 		}
 	}
 
