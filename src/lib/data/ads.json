@@ -9,7 +9,8 @@
       "message": "Oxidising European Defence",
       "image": "/helsing-ad-image.png",
       "fullMessage": "Helsing is a defence AI company with a mission to protect our democracies.\n\nWe believe we have a responsibility to be thoughtful about the development and deployment of powerful technologies.\n\nWe are proud of the world-class team we have built from diverse backgrounds, combining deep experience in defence, artificial intelligence and software engineering.\n\nJoin our European teams.\n\nApply your Rust skills to solve complex, high-stakes problems that matter most.",
-      "url": "https://helsing.ai/rust-nation"
+      "url": "https://helsing.ai/rust-nation",
+      "ctaText": "Visit Helsing Website"
     },
     {
       "id": 1,

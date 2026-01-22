@@ -12,6 +12,7 @@
 		fullMessage?: string;
 		image?: string;
 		url: string;
+		ctaText?: string;
 	}
 
 	interface Props {
@@ -229,7 +230,7 @@
 							rel="noopener noreferrer"
 							class="modal-cta"
 						>
-							Visit Website
+							{currentAd.ctaText || 'Visit Website'}
 							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
 								<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
 								<polyline points="15 3 21 3 21 9"/>
