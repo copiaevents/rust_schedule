@@ -211,10 +211,12 @@
 				{#if currentAd.image}
 					<img src={resolveAsset(currentAd.image)} alt="{currentAd.name} advertisement" class="modal-ad-image" />
 					<div class="modal-image-content">
-						<img src={getLogo(currentAd)} alt="{currentAd.name} logo" class="modal-logo-small" />
-						<div class="modal-image-header">
-							<span class="sponsor-tier">{currentAd.tier}</span>
-							<h2 id="sponsor-modal-title" class="modal-title-small">{currentAd.name}</h2>
+						<div class="modal-sponsor-row">
+							<img src={getLogo(currentAd)} alt="{currentAd.name} logo" class="modal-logo-small" />
+							<div class="modal-sponsor-info">
+								<span class="sponsor-tier">{currentAd.tier}</span>
+								<h2 id="sponsor-modal-title" class="modal-title-small">{currentAd.name}</h2>
+							</div>
 						</div>
 						{#if currentAd.fullMessage}
 							<p class="modal-full-message">{currentAd.fullMessage}</p>
@@ -524,25 +526,32 @@
 
 	.modal-image-content {
 		padding: var(--space-lg);
-		text-align: center;
+	}
+
+	.modal-sponsor-row {
+		display: flex;
+		align-items: center;
+		gap: var(--space-md);
+		margin-bottom: var(--space-md);
 	}
 
 	.modal-logo-small {
-		width: 60px;
-		height: 60px;
+		width: 48px;
+		height: 48px;
 		object-fit: contain;
-		margin-bottom: var(--space-md);
+		border-radius: var(--radius-sm);
+		flex-shrink: 0;
 	}
 
-	.modal-image-header {
-		margin-bottom: var(--space-md);
+	.modal-sponsor-info {
+		text-align: left;
 	}
 
 	.modal-title-small {
-		font-size: var(--text-xl);
+		font-size: var(--text-lg);
 		font-weight: 700;
 		color: var(--color-text);
-		margin: var(--space-xs) 0 0 0;
+		margin: 0;
 	}
 
 	.modal-full-message {
