@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 
 	interface SponsorAd {
 		id: number;
@@ -113,6 +114,14 @@
 	});
 
 	let currentAd = $derived(ads[currentAdIndex]);
+
+	// Resolve asset paths - prefix local paths with base path
+	function resolveAsset(path: string): string {
+		if (path.startsWith('/')) {
+			return `${base}${path}`;
+		}
+		return path;
+	}
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -134,7 +143,7 @@
 			>
 				<div class="progress-bar" style="width: {progress}%"></div>
 
-				<img src={currentAd.logo} alt="{currentAd.name} logo" class="sponsor-logo" />
+				<img src={resolveAsset(currentAd.logo)} alt="{currentAd.name} logo" class="sponsor-logo" />
 
 				<div class="toast-content">
 					<span class="sponsor-message">{currentAd.message}</span>
@@ -180,14 +189,14 @@
 				<div class="modal-content" class:has-pdf={currentAd.pdf}>
 				{#if currentAd.pdf}
 					<div class="modal-pdf-header">
-						<img src={currentAd.logo} alt="{currentAd.name} logo" class="modal-logo-small" />
+						<img src={resolveAsset(currentAd.logo)} alt="{currentAd.name} logo" class="modal-logo-small" />
 						<div class="modal-pdf-info">
 							<span class="sponsor-tier">{currentAd.tier}</span>
 							<h2 id="sponsor-modal-title" class="modal-title-small">{currentAd.name}</h2>
 						</div>
 					</div>
 					<div class="pdf-container">
-						<iframe src={currentAd.pdf} title="{currentAd.name} information" class="pdf-viewer"></iframe>
+						<iframe src={resolveAsset(currentAd.pdf)} title="{currentAd.name} information" class="pdf-viewer"></iframe>
 					</div>
 					<a
 						href={currentAd.url}
@@ -203,7 +212,7 @@
 						</svg>
 					</a>
 				{:else}
-					<img src={currentAd.logo} alt="{currentAd.name} logo" class="modal-logo" />
+					<img src={resolveAsset(currentAd.logo)} alt="{currentAd.name} logo" class="modal-logo" />
 
 					<div class="modal-header">
 						<span class="sponsor-tier">{currentAd.tier} sponsor</span>
