@@ -20,7 +20,7 @@
 	}
 </script>
 
-<article class="sponsor-card sponsor-card--{sponsor.tier}">
+<article class="sponsor-card">
 	<div class="sponsor-logo-wrapper">
 		<img
 			src={sponsor.logo}
@@ -33,7 +33,6 @@
 	<div class="sponsor-content">
 		<div class="sponsor-header">
 			<h3 class="sponsor-name">{sponsor.name}</h3>
-			<span class="sponsor-tier">{sponsor.tier}</span>
 		</div>
 
 		{#if sponsor.bio}
@@ -126,35 +125,6 @@
 		font-size: var(--text-lg);
 		font-weight: 600;
 		color: var(--color-text);
-	}
-
-	.sponsor-tier {
-		padding: var(--space-xs) var(--space-sm);
-		border-radius: var(--radius-full);
-		font-size: var(--text-xs);
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
-
-	.sponsor-card--platinum .sponsor-tier {
-		background: linear-gradient(135deg, #E5E4E2, #A8A9AD);
-		color: #1a1a1a;
-	}
-
-	.sponsor-card--gold .sponsor-tier {
-		background: linear-gradient(135deg, #FFD700, #FFA500);
-		color: #1a1a1a;
-	}
-
-	.sponsor-card--silver .sponsor-tier {
-		background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
-		color: #1a1a1a;
-	}
-
-	.sponsor-card--bronze .sponsor-tier {
-		background: linear-gradient(135deg, #CD7F32, #A0522D);
-		color: var(--color-text-light);
 	}
 
 	.bio-toggle {
