@@ -45,11 +45,18 @@
 		talk_abstract: string | null;
 	}
 
+	interface ApiSessionTrack {
+		id: string;
+		name: string;
+		color: string;
+	}
+
 	interface ApiSession {
 		id: string;
 		title: string | null;
 		description: string | null;
 		track_id: string | null;
+		track: ApiSessionTrack | null;
 		speaker: ApiSpeaker;
 	}
 
@@ -186,22 +193,24 @@
 					label: slot.title || slot.slot_type.replace('_', ' ')
 				});
 			} else if (slot.sessions && slot.sessions.length > 0) {
-				// Filter to only sessions with speakers assigned
-				const sessionsWithSpeakers = slot.sessions.filter(s => s.speaker?.full_name);
+				// Filter to only sessions with actual speakers (not "Coming soon")
+				const sessionsWithSpeakers = slot.sessions.filter(
+					s => s.speaker?.full_name && s.speaker.full_name !== 'Coming soon'
+				);
 
 				// Each session in the slot becomes a talk
 				for (let i = 0; i < sessionsWithSpeakers.length; i++) {
 					const session = sessionsWithSpeakers[i];
 					let trackId: string;
 
-					if (session.track_id) {
+					if (session.track?.id) {
 						// Session has explicit track assignment
-						trackId = session.track_id;
+						trackId = session.track.id;
 					} else if (slot.track_id) {
 						// Slot has explicit track assignment
 						trackId = slot.track_id;
 					} else if (sessionsWithSpeakers.length > 1 && mainTracks.length > 0) {
-						// Multiple sessions without track_id = parallel sessions
+						// Multiple sessions without track = parallel sessions
 						// Distribute across main tracks by index
 						trackId = mainTracks[i % mainTracks.length]?.id || mainTracks[0].id;
 					} else if (mainTracks.length > 0) {
