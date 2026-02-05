@@ -49,6 +49,7 @@
 		id: string;
 		title: string | null;
 		description: string | null;
+		track_id: string | null;
 		speaker: ApiSpeaker;
 	}
 
@@ -185,15 +186,21 @@
 					label: slot.title || slot.slot_type.replace('_', ' ')
 				});
 			} else if (slot.sessions && slot.sessions.length > 0) {
+				// Filter to only sessions with speakers assigned
+				const sessionsWithSpeakers = slot.sessions.filter(s => s.speaker?.full_name);
+
 				// Each session in the slot becomes a talk
-				for (let i = 0; i < slot.sessions.length; i++) {
-					const session = slot.sessions[i];
+				for (let i = 0; i < sessionsWithSpeakers.length; i++) {
+					const session = sessionsWithSpeakers[i];
 					let trackId: string;
 
-					if (slot.track_id) {
+					if (session.track_id) {
+						// Session has explicit track assignment
+						trackId = session.track_id;
+					} else if (slot.track_id) {
 						// Slot has explicit track assignment
 						trackId = slot.track_id;
-					} else if (slot.sessions.length > 1 && mainTracks.length > 0) {
+					} else if (sessionsWithSpeakers.length > 1 && mainTracks.length > 0) {
 						// Multiple sessions without track_id = parallel sessions
 						// Distribute across main tracks by index
 						trackId = mainTracks[i % mainTracks.length]?.id || mainTracks[0].id;
@@ -204,10 +211,10 @@
 						trackId = apiTracks[0]?.id || '';
 					}
 
-					// Get talk info from speaker object (talk_title/talk_abstract) or fallback to session/slot
+					// Get talk info from speaker object (talk_title/talk_abstract)
 					const talkTitle = session.speaker?.talk_title || session.title || slot.title || 'TBA';
 					const talkAbstract = session.speaker?.talk_abstract || session.description || '';
-					const speakerName = session.speaker?.full_name || 'TBA';
+					const speakerName = session.speaker!.full_name;
 
 					transformedTalks.push({
 						id: session.id,
