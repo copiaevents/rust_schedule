@@ -172,15 +172,15 @@
 	}
 
 	.tier-title {
-		font-size: var(--text-base);
+		font-size: var(--text-xs);
 		font-weight: 700;
 		text-transform: uppercase;
-		letter-spacing: 0.08em;
+		letter-spacing: 0.05em;
 		color: var(--color-primary);
 		margin-bottom: var(--space-md);
-		padding: var(--space-sm) var(--space-md);
+		padding: var(--space-xs) var(--space-sm);
 		background: rgba(120, 10, 233, 0.1);
-		border-radius: var(--radius-md);
+		border-radius: var(--radius-sm);
 		display: inline-block;
 	}
 
